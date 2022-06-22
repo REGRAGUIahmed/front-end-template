@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
+</head>
+
+<body>
+
+<div class="navbar">
+    <a th:href="@{/}">Accueil</a>
+    <a th:href="@{/customers}">Clients</a>
+    <a th:href="@{/products}">Produits</a>
+    <a th:href="@{/factures}">Factures</a>
+    <div class="dropdown">
+        <span style="color: blue" sec:authentication="name"></span>
+        <button class="dropbtn">
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a th:href="@{/logout}">Déconnexion</a>
+            <a th:href="@{/change-password}">Modifier mot de passe</a>
+        </div>
+    </div>
+</div>
+<h2>Liste des clients</h2>
+    <table >
+        <tr>
+            <th>ID </th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr >
+        <tr th:each="c:${customers}">
+            <td th:text="${c.id}"></td>
+            <td th:text="${c.nom}"></td>
+            <td th:text="${c.prenom}"></td>
+            <td th:text="${c.email}"></td>
+            <td>
+                <a th:href="@{'/customers/'+${c.id}}" >Supprimer</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

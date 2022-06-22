@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Produits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+</head>
+<body>
+<div class="navbar">
+    <a class="nav-link active" th:href="@{/}">Accueil</a>
+    <a th:href="@{/customers}">Clients</a>
+    <a th:href="@{/products}">Produits</a>
+    <a th:href="@{/factures}">Factures</a>
+    <div class="dropdown">
+        <span style="color: blue" sec:authentication="name"></span>
+        <button class="dropbtn">
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a th:href="@{/logout}">Déconnexion</a>
+            <a th:href="@{/change-password}">Modifier mot de passe</a>
+        </div>
+    </div>
+</div>
+<h2>Liste des produits</h2>
+    <table >
+        <tr>
+            <th>ID</th>
+            <th>Designation</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Action</th>
+        </tr >
+        <tr th:each="p:${products}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.designation}"></td>
+            <td th:text="${p.prix}"></td>
+            <td th:text="${p.quantite}"></td>
+            <td>
+                <a th:href="@{'/products/'+${p.id}}" >Supprimer</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

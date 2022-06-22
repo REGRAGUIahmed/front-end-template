@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+</head>
+<body>
+
+<div class="navbar">
+    <a class="nav-link active" th:href="@{/}">Accueil</a>
+    <a th:href="@{/customers}">Clients</a>
+    <a th:href="@{/products}">Produits</a>
+    <a th:href="@{/factures}">Factures</a>
+    <div class="dropdown">
+        <span style="color: blue" sec:authentication="name"></span>
+        <button class="dropbtn">
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a th:href="@{/logout}">Déconnexion</a>
+            <a th:href="@{/change-password}">Modifier mot de passe</a>
+        </div>
+    </div>
+</div>
+<div class="docum">
+<h3>Bienvenu dans cette application qui représente l'implémentation de trois micro-services: </h3>
+<li> Service clients (Customer Service)</li>
+<br>
+<li> Service produits (Product Service)</li>
+<br>
+<li> Service factures (Billing Service)</li>
+<br>
+ <b>Réaliser par Ahmed REGRAGUI </b>
+</div>
+</body>
+</html>
